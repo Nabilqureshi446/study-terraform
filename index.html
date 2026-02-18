@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Static Website</title>
+    <meta charset="UTF-8">
+    <title>My Static Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00ccff;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome Nabil!</h1>
-<h2>This website is hosted on AWS S3 using Terraform</h2>
+
+<header>
+    <h1>Welcome to My Static Website</h1>
+    <p>This is a simple HTML static website demo</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2>About Us</h2>
+        <p>This is a demo static website created using only HTML and CSS.</p>
+        <button onclick="showMessage()">Click Me</button>
+    </div>
+
+    <div class="card">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Web Development</li>
+            <li>Cloud Services</li>
+            <li>Import Export Solutions</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Contact</h2>
+        <p>Email: example@email.com</p>
+        <p>Phone: +91 9876543210</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 My Static Website</p>
+</footer>
+
+<script>
+    function showMessage() {
+        alert("Hello! This is a static website demo.");
+    }
+</script>
+
 </body>
 </html>
