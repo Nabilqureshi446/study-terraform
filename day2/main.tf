@@ -4,8 +4,7 @@
 # S3 Bucket
 # -----------------------------
 resource "aws_s3_bucket" "static_site" {
-  bucket = "nabil-static-website-123456"   # change to unique name
-
+  bucket = "nabil-static-website-123456"   
   tags = {
     Name = "StaticWebsite"
     Env  = "Dev"
