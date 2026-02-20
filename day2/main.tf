@@ -4,7 +4,7 @@ provider "aws" {
 
 # Create S3 Bucket
 resource "aws_s3_bucket" "static_site" {
-  bucket = "nabil-static-website-123456"
+  bucket = "nabil-static-website-786"
 
   tags = {
     Name = "StaticWebsite"
