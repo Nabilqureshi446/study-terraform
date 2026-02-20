@@ -1,19 +1,21 @@
+provider "aws" {
+  region = "us-east-1"
+}
 
-
-# -----------------------------
-# S3 Bucket
-# -----------------------------
 resource "aws_s3_bucket" "static_site" {
-  bucket = "nabil-static-website-123456"   
+  bucket = "nabil-static-website-123456"
+
   tags = {
     Name = "StaticWebsite"
     Env  = "Dev"
   }
 }
 
-# -----------------------------
-# Enable Static Website Hosting
-# -----------------------------
+resource "aws_s3_bucket_acl" "static_site_acl" {
+  bucket = aws_s3_bucket.static_site.id
+  acl    = "public-read"
+}
+
 resource "aws_s3_bucket_website_configuration" "static_site" {
   bucket = aws_s3_bucket.static_site.id
 
@@ -22,9 +24,6 @@ resource "aws_s3_bucket_website_configuration" "static_site" {
   }
 }
 
-# -----------------------------
-# Public Access Block
-# -----------------------------
 resource "aws_s3_bucket_public_access_block" "static_site" {
   bucket = aws_s3_bucket.static_site.id
 
@@ -34,9 +33,6 @@ resource "aws_s3_bucket_public_access_block" "static_site" {
   restrict_public_buckets = false
 }
 
-# -----------------------------
-# Bucket Policy
-# -----------------------------
 resource "aws_s3_bucket_policy" "static_site" {
 
   depends_on = [aws_s3_bucket_public_access_block.static_site]
@@ -54,19 +50,19 @@ resource "aws_s3_bucket_policy" "static_site" {
   })
 }
 
-# -----------------------------
-# Upload index.html
-# -----------------------------
 resource "aws_s3_object" "index" {
+
+  depends_on = [
+    aws_s3_bucket_acl.static_site_acl
+  ]
+
   bucket       = aws_s3_bucket.static_site.id
   key          = "index.html"
   source       = "index.html"
   content_type = "text/html"
+  acl          = "public-read"
 }
 
-# -----------------------------
-# Output Website URL
-# -----------------------------
 output "website_url" {
   value = aws_s3_bucket_website_configuration.static_site.website_endpoint
 }
