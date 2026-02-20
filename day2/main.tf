@@ -32,6 +32,9 @@ resource "aws_s3_bucket_public_access_block" "static_site" {
 
 # Bucket Policy for Public Read
 resource "aws_s3_bucket_policy" "static_site" {
+
+  depends_on = [aws_s3_bucket_public_access_block.static_site]
+
   bucket = aws_s3_bucket.static_site.id
 
   policy = jsonencode({
@@ -44,6 +47,7 @@ resource "aws_s3_bucket_policy" "static_site" {
     }]
   })
 }
+
 
 # Upload index.html
 resource "aws_s3_object" "index" {
