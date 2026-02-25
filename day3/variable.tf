@@ -8,7 +8,7 @@ variable "instance_type "{
 
 }
 
-variable "key_name " {
+variable "key_name" {
     default = "3tier"
   
 }
