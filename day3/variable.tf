@@ -1,5 +1,5 @@
 variable "image_id" {
-    default = "ami-0c55b159cbfafe1f0"
+    default = "ami-0b6c6ebed2801a5cb"
 
 }
 
