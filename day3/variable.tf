@@ -12,3 +12,8 @@ variable "key_name" {
     default = "3tier"
   
 }
+
+variable "vpc_security_group_ids" {
+    default = [sg-02a1d14dea6c37136]
+  
+}
